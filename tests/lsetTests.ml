@@ -13,13 +13,13 @@ let empty_suite = "empty" >::: [
       assert_true (s.Lset.eq 5 15));
 ]
 
-let plusplus_suite = "++" >::: [
+let plusplus_suite = "+>" >::: [
   "commutative" >::
-    (fun _ -> assert_set Lset.(empty ++ 1 ++ 2) Lset.(empty ++ 2 ++ 1));
+    (fun _ -> assert_set Lset.(empty +> 1 +> 2) Lset.(empty +> 2 +> 1));
   "idempotent" >::
-    (fun _ -> assert_set Lset.(empty ++ 1 ++ 1) Lset.(empty ++ 1));
+    (fun _ -> assert_set Lset.(empty +> 1 +> 1) Lset.(empty +> 1));
   "mod10" >::
-    (fun _ -> assert_set Lset.(smod10 ++ 2 ++ 12) Lset.(smod10 ++ 2));
+    (fun _ -> assert_set Lset.(smod10 +> 2 +> 12) Lset.(smod10 +> 2));
 ]
 
 let init_suite = "init" >::: [
@@ -52,40 +52,40 @@ let size_suite = "size" >::: List.map (fun (n, s) ->
     (2, pair 1 2);
     (1, pair 1 1);
     (1, sing 2);
-    (3, empty ++ 1 ++ 2 ++ 3);
-    (2, empty ++ 1 ++ 2 ++ 1);
+    (3, empty +> 1 +> 2 +> 3);
+    (2, empty +> 1 +> 2 +> 1);
     (5, init (fun i -> i) 5);
-    (1, init (fun i -> 0) 5);
-    (0, init (fun i -> 1) 5 - init (fun i -> i) 5);
+    (1, init (fun _ -> 0) 5);
+    (0, init (fun _ -> 1) 5 - init (fun i -> i) 5);
     (5, init (fun i -> i) 3 + init (fun i -> i) 5);
-    (5, init (fun i -> i) 3 ++ 42 ++ 21);
+    (5, init (fun i -> i) 3 +> 42 +> 21);
     (5, from_list [1; 2; 3; 21; 42]);
-    (2, smod10 ++ 5 ++ 10 ++ 15 ++ 20);
+    (2, smod10 +> 5 +> 10 +> 15 +> 20);
   ])
 
 let subset_suite = "<=" >::: List.map (fun (s, t) ->
   "simple" >:: (fun _ -> assert_bool "<= failed" Lset.(s <= t))) Lset.([
     (sing 5, pair 5 6);
     (pair 5 5, sing 5);
-    (empty ++ 1 ++ 2 ++ 3, init (fun i -> i) 5);
-    (from_list [1;2;1], empty ++ 1 ++ 2 ++ 3);
-    (smod10 ++ 5 ++ 15, smod10 ++ 5);
+    (empty +> 1 +> 2 +> 3, init (fun i -> i) 5);
+    (from_list [1;2;1], empty +> 1 +> 2 +> 3);
+    (smod10 +> 5 +> 15, smod10 +> 5);
   ])
 
 let equal_suite = "=" >::: List.map (fun (s, t) ->
   "simple" >:: (fun _ -> assert_bool "= failed" Lset.(s = t))) Lset.([
     (sing 5, sing 5);
     (sing 5, pair 5 5);
-    (sing 5, empty ++ 5 ++ 5 ++ 5);
+    (sing 5, empty +> 5 +> 5 +> 5);
     (sing 5, init (fun _ -> 5) 10);
     (sing 5, from_list [5; 5; 5]);
-    (init (fun i -> i) 5 ++ 5, init (fun i -> succ i) 5 ++ 0);
-    (smod10 ++ 5 ++ 15, smod10 ++ 5);
+    (init (fun i -> i) 5 +> 5, init (fun i -> succ i) 5 +> 0);
+    (smod10 +> 5 +> 15, smod10 +> 5);
   ])
 
 let union_suite = "+" >::: List.map (fun (l, s) ->
   "simple" >:: (fun _ -> assert_bool "+ failed" Lset.(from_list l = s))) Lset.([
-    ([5], empty + empty ++ 5);
+    ([5], empty + empty +> 5);
     ([1;2;3], sing 1 + pair 2 3);
   ])
 

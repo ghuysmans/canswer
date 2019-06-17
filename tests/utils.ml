@@ -15,8 +15,8 @@ let assert_set s t = assert_bool "Unequal sets" L.(s = t)
 (* Lsets examples *)
 let pmod10 a b = a mod 10 = b mod 10
 let smod10 = L.empty_eq pmod10
-let smod10full = L.(smod10 ++ 0 ++ 1 ++ 2 ++ 3 ++ 4 ++ 5 ++ 6 ++ 7 ++ 8 ++ 9)
-let smod10even = L.(smod10 ++ 0 ++ 2 ++ 4 ++ 6 ++ 8)
+let smod10full = L.(smod10 +> 0 +> 1 +> 2 +> 3 +> 4 +> 5 +> 6 +> 7 +> 8 +> 9)
+let smod10even = L.(smod10 +> 0 +> 2 +> 4 +> 6 +> 8)
 
 (* Symbols examples *)
 let var x = Symbol.Variable x
@@ -33,7 +33,7 @@ let c = con "c"
 
 (* Relation names examples *)
 let rs = RN.binary "R" "A" "B"
-let ss = RN.fullkey "S" L.(empty ++ "B" ++ "C" ++ "D")
+let ss = RN.fullkey "S" L.(empty +> "B" +> "C" +> "D")
 let ts = RN.make "T" (L.sing "A") (fun _ -> false)
 
 (* Substitutions examples *)

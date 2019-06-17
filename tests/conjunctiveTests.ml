@@ -45,7 +45,7 @@ let vars_suite = "vars" >::: [
   );
   "with constants" >:: (fun _ ->
     assert_set
-      Lset.(empty ++ "x" ++ "y" ++ "z")
+      Lset.(empty +> "x" +> "y" +> "z")
       Conjunctive.(vars (a @ b @ empty + f1 + f2 + f3))
   );
   "positive" >:: (fun _ ->

@@ -6,7 +6,7 @@ let key_suite = "key" >::: List.map (fun (k, f) ->
     (sing "x", f1);
     (sing "z", f2);
     (empty, f3);
-    (empty ++ "x" ++ "y" ++ "z", g);
+    (empty +> "x" +> "y" +> "z", g);
   ])
 
 let vars_suite = "vars" >::: List.map (fun (vars, f) ->
@@ -14,7 +14,7 @@ let vars_suite = "vars" >::: List.map (fun (vars, f) ->
     (pair "x" "y", f1);
     (sing "z", f2);
     (sing "x", f3);
-    (empty ++ "x" ++ "y" ++ "z", g);
+    (empty +> "x" +> "y" +> "z", g);
   ])
 
 let substitute_suite = "substitute" >::: [
