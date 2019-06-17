@@ -1,0 +1,12 @@
+opam-version: "1.2"
+name: "canswer"
+version: "0.0.1"
+maintainer: "Guillaume Huysmans <ghuysmans99@gmail.com>"
+authors: "Fabian Pijcke <fabian.pijcke@gmail.com>"
+homepage: "https://github.com/ghuysmans/canswer/"
+bug-reports: "https://github.com/ghuysmans/canswer/issues"
+dev-repo: "https://github.com/ghuysmans/canswer/"
+build: [["dune" "build" "-p" name "-j" jobs]]
+depends: [
+  "dune" {build}
+]
