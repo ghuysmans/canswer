@@ -33,7 +33,7 @@ val ( +< ) : 'a -> 'a t -> 'a t
 val init : ?eq:'a eq -> (int -> 'a) -> int -> 'a t
 (** [init f n] creates a set [{f 0, ..., f (n-1)}].
 
-  @throws Invalid_argument "negative arity" if [n < 0]. *)
+  @raise Invalid_argument "negative arity" if [n < 0]. *)
 
 val from_list : ?eq:'a eq -> 'a list -> 'a t
 (** [from_list l] transforms a list into a set. *)

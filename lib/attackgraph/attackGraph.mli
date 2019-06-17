@@ -1,7 +1,7 @@
 type node = {
   q : Conjunctive.t;
   atom : Atom.t;
-  keycl : Symbol.variable Lset.t; (** Closure of key(F) in K(q\{F}) *)
+  keycl : Symbol.variable Lset.t; (** Closure of key(F) in K(q\{F\}) *)
   keycl' : Symbol.variable Lset.t; (** Closure of key(F) in K(q) *)
   attvars : Symbol.variable Lset.t;
   attatoms : Atom.t Lset.t;
