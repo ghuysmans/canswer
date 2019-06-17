@@ -71,8 +71,8 @@ let split_attack_graph q =
 
 let cqafo { CqaFO.query; CqaFO.outsourced; CqaFO.insourced } =
   let free_f s v = S.(s + v * Symbol.var ("<o>" ^ v ^ "</o>")) in
-  let outsourced_f s v = S.(s + v * Symbol.var (String.uppercase v)) in
-  let insourced_f s v = S.(s + v * Symbol.var (String.lowercase v)) in
+  let outsourced_f s v = S.(s + v * Symbol.var (String.uppercase_ascii v)) in
+  let insourced_f s v = S.(s + v * Symbol.var (String.lowercase_ascii v)) in
   let subst = Lset.fold_left free_f S.id (Symbol.vars query.C.free) in
   let subst = Lset.fold_left outsourced_f subst outsourced in
   let subst = Lset.fold_left insourced_f subst insourced in

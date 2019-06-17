@@ -64,7 +64,7 @@ let atoms_after ag n = match n.atoms_after with
     n.atoms_after <- Some atoms_after;
     atoms_after
 
-let strong ag n f = not (Lset.(C.atomkey n.q f <= n.keycl'))
+let strong _ag n f = not (Lset.(C.atomkey n.q f <= n.keycl'))
 let transitive ag n f =
   Lset.exists (fun n' -> Lset.mem n'.atom n.attatoms && Lset.mem f n'.attatoms) ag
 let cyclic ag n f = Lset.mem n.atom (atoms_after ag (find ag f))

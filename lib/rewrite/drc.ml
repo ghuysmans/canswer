@@ -2,7 +2,6 @@ module RN = RelationName
 module C = Conjunctive
 module AG = AttackGraph
 
-type atom_attr = Atom.t * RN.attribute
 let aa_eq (f, a) (f', a') = Atom.(f = f') && a = a'
 
 module Variable = struct

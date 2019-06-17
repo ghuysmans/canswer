@@ -50,7 +50,7 @@ let rec make_corr ?(tvar="t") init atoms = match Lset.pop atoms with
     | None -> make_corr f atoms
     | Some (a, attrs) ->
         match atom.A.f a with
-        | Symbol.Constant c -> aux f attrs
+        | Symbol.Constant _ -> aux f attrs
         | v when f v <> Constant "" -> aux f attrs
         | v -> aux (fun v' ->
             if Pervasives.(v = v') then Map (var tvar atom, a) else f v'

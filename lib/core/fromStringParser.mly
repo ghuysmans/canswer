@@ -1,6 +1,6 @@
 %{
   let i = ref 0
-  let gen s =
+  let gen () =
     i := !i + 1;
     string_of_int (!i)
 
