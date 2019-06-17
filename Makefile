@@ -16,3 +16,6 @@ install:
 
 uninstall:
 	dune uninstall
+
+top:
+	dune utop lib
