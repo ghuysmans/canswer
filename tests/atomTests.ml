@@ -1,3 +1,4 @@
+open Canswer.Core
 open OUnit2
 open Utils
 

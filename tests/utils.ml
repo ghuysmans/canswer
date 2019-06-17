@@ -1,4 +1,5 @@
 open OUnit2
+open Canswer.Core
 
 module L = Lset
 module Sy = Symbol
